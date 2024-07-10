@@ -1,31 +1,24 @@
-/* EXAMPLE OF AN API REQUEST */
-
-/*
-let longitude = 44.83; // Bordeaux longitude
-let latitude = -0.57; // Bordeaux latitude
-let api_key = '891fcaaa0f613df11046ed15bd1a4607'; // Teacher's API Key
-let api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`; // API URL
-
-const getWeather = () => {
-  axios.get(api_url)
-  .then((response)=>console.log(response.data.main.temp - 273.15))
-  .catch((err)=> console.log(err))
-}
-getWeather();
-*/
-
-
-
+// ex4.js
 
 export const fetchData = async () => {
-    // Your code here: Implement an API request (e.g., fetch data from a fictional API).
-  };
-  
-  // script.js
-  import { fetchData } from './ex4';
-  
-  function displayData() {
-    // Your code here: Fetch and display data from the API using fetchData.
+  try {
+    let longitude = -43.2075000; // Rennes longitude
+    let latitude = -22.9027800; // Rennes latitude
+    let api_key = '1db3cf629ed34b77854175aa24be064d'; // Teacher's API Key
+    let api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}&units=metric`; // API URL
+
+    const response = await fetch(api_url);
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
   }
-  
-  document.addEventListener('DOMContentLoaded', displayData);
+};
+
+
+

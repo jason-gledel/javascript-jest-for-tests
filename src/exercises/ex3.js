@@ -21,3 +21,5 @@ emailForm.addEventListener('submit', function(event) {
     validationMessage.style.color = 'red';
   }
 });
+
+console.log("Salut");
